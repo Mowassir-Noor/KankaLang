@@ -1,18 +1,34 @@
 package com.craftinginterpreters.lox;
 
-class Interpreter implements Expr.Visitor<Object> {
+import java.util.List;
+
+class Interpreter implements Expr.Visitor<Object> , Stmt.Visitor<Void> {
 
 
-    void interpret(Expr expressions){
+//    void interpret(Expr expressions){
+//        try{
+//            Object value=evaluate(expressions);
+//            System.out.println(stringify(value));
+//        }
+//        catch(RuntimeError error){
+//            Lox.runtimeError(error);
+//        }
+//    }
+
+    void interpret(List<Stmt> statements){
+
         try{
-            Object value=evaluate(expressions);
-            System.out.println(stringify(value));
-        }
-        catch(RuntimeError error){
+            for(Stmt statement: statements){
+                execute(statement);
+            }
+        }catch(RuntimeError error){
             Lox.runtimeError(error);
         }
     }
 
+    private void execute(Stmt stmt){
+        stmt.accept(this);
+    }
 
     @Override
     public Object visitAssignExpr(Expr.Assign expr) {
@@ -146,6 +162,8 @@ class Interpreter implements Expr.Visitor<Object> {
 
 
 
+
+
     private boolean isTruthy(Object object){
         if(object ==null) return false;
         if(object instanceof Boolean) return (boolean)object;
@@ -172,7 +190,55 @@ class Interpreter implements Expr.Visitor<Object> {
         }
         return object.toString();
     }
+//    Stmt code
 
+    @Override
+    public Void visitBlockStmt(Stmt.Block stmt) {
+        return null;
+    }
 
+    @Override
+    public Void visitClassStmt(Stmt.Class stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitExpressionStmt(Stmt.Expression stmt){
+        evaluate(stmt.expression);
+
+        return null;
+    }
+
+    @Override
+    public Void visitFunctionStmt(Stmt.Function stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitIfStmt(Stmt.If stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitPrintStmt(Stmt.Print stmt){
+       Object value =evaluate(stmt.expression);
+        System.out.println(stringify(value));
+        return null;
+    }
+
+    @Override
+    public Void visitReturnStmt(Stmt.Return stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitVarStmt(Stmt.Var stmt) {
+        return null;
+    }
+
+    @Override
+    public Void visitWhileStmt(Stmt.While stmt) {
+        return null;
+    }
 
 }
