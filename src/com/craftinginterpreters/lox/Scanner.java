@@ -49,6 +49,7 @@ public class Scanner {
                  scanToken();
              }
              tokens.add(new Token(EOF,"",null,line));
+             System.out.println(tokens);
              return tokens;
          }
 
