@@ -298,7 +298,12 @@ return null;
 
     @Override
     public Void visitWhileStmt(Stmt.While stmt) {
-        return null;
+
+        while(isTruthy(evaluate(stmt.condition))){
+            execute(stmt.body);
+        }
+
+    return null;
     }
 
 }

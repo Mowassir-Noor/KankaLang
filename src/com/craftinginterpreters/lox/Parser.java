@@ -1,5 +1,5 @@
 package com.craftinginterpreters.lox;
-
+import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
 import static com.craftinginterpreters.lox.TokenType.*;
@@ -52,13 +52,72 @@ public class Parser {
 
 
     private Stmt statement(){
+       if(match(WHILE)) return whileStatement();
+        if(match(FOR)) return forStatement();
         if( match(PRINT)) return printStatement();
         if(match(LEFT_BRACE)) return new Stmt.Block(block());
        if(match(IF)) return  ifStatement();
 
         return expressionStatement();
     }
-   private Stmt ifStatement(){
+
+
+   private Stmt forStatement(){
+        consume(LEFT_PAREN,"Expect '(' after 'for' . ");
+
+        Stmt initializer;
+        if(match(SEMICOLON)){
+            initializer =null;
+        }
+        else if(match(VAR)){
+            initializer=varDeclaration();
+        }
+        else {
+            initializer =expressionStatement();
+        }
+
+        Expr condition=null;
+        if(!check(SEMICOLON)){
+            condition=expression();
+
+        }
+        consume(SEMICOLON,"Expect ';' after for loop condition . . ");
+
+
+   Expr increment=null;
+   if(!check(RIGHT_PAREN)){
+       increment =expression();
+   }
+consume(RIGHT_PAREN,"Expect ')' after for loop condition . . ");
+
+
+
+   Stmt body=statement();
+
+
+
+  if(increment!=null){
+      body=new Stmt.Block(Arrays.asList(body, new Stmt.Expression(increment)));
+  }
+
+if(condition==null) condition=new Expr.Literal(true);
+body=new Stmt.While(condition,body);
+
+
+
+       if (initializer != null) {
+           body = new Stmt.Block(Arrays.asList(initializer, body));
+       }
+       return body;
+    }
+
+
+
+
+
+
+
+    private Stmt ifStatement(){
         consume(LEFT_PAREN,"expect ( after if .");
         Expr condition = expression();
         consume(RIGHT_PAREN,"expect ')' after if condition ");
@@ -92,6 +151,18 @@ public class Parser {
         consume(SEMICOLON,"Expect ';' after variable declaration.");
         return new Stmt.Var(name, initializer);
     }
+
+   private  Stmt whileStatement(){
+        consume(LEFT_PAREN,"expect ( after while .");
+        Expr condition= expression();
+        consume(RIGHT_PAREN,"expect ')' after while condition ");
+        Stmt body=statement();
+
+        return new Stmt.While(condition,body);
+   }
+
+
+
     private Stmt expressionStatement(){
         Expr value=expression();
         consume(SEMICOLON,"Expect ';' after expression  .");
@@ -128,7 +199,7 @@ public class Parser {
 
         while(match(OR)){
             Token operator = previous();
-            Expr right=and();
+            Expr right= and();
             expr=new Expr.Logical(expr,operator,right);
         }
 
