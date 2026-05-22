@@ -1,4 +1,4 @@
-package com.craftinginterpreters.lox;
+package com.kankaLang.kanzi;
 public enum FunctionType {
     NONE,
     FUNCTION

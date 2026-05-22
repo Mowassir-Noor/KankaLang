@@ -1,4 +1,4 @@
-package com.craftinginterpreters.lox;
+package com.kankaLang.kanzi;
 
 import java.util.HashMap;
 import java.util.List;

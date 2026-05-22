@@ -1,4 +1,4 @@
-package com.craftinginterpreters.lox;
+package com.kankaLang.kanzi;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -73,7 +73,7 @@ public class Lox {
        resolver.resolve(statements);
 
        //stop for resolution error
-       if (hadError) return;
+       if (hadError) return;    
 //       System.out.println(new AstPrinter().print(expression));
         interpreter.interpret(statements);
    }

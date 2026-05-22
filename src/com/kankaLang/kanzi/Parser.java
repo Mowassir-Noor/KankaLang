@@ -1,8 +1,8 @@
-package com.craftinginterpreters.lox;
+package com.kankaLang.kanzi;
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
-import static com.craftinginterpreters.lox.TokenType.*;
+import static com.kankaLang.kanzi.TokenType.*;
 
 public class Parser {
     private static class ParseError extends RuntimeException {}

@@ -1,4 +1,4 @@
-package com.craftinginterpreters.lox;
+package com.kankaLang.kanzi;
 class Return extends RuntimeException {
     final Object value;
     Return(Object value) {
