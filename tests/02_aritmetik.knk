@@ -1,0 +1,22 @@
+// Aritmetik islemler testi
+
+degisken a = 10;
+degisken b = 3;
+
+yazdir a + b;
+yazdir a - b;
+yazdir a * b;
+yazdir a / b;
+
+// Karisik ifade
+degisken sonuc = (a + b) * 2 - 1;
+yazdir sonuc;
+
+// String birlestirme
+degisken ad = "Kanka";
+degisken soyad = " Dili";
+yazdir ad + soyad;
+
+// Negatif sayi
+degisken negatif = -5;
+yazdir negatif;

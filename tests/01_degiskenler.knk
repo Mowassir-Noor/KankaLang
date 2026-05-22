@@ -1,0 +1,17 @@
+// Degisken tanimlama ve yazdir testi
+
+degisken isim = "Kanka";
+degisken yas = 21;
+degisken pi = 3.14;
+degisken boolDeger = dogru;
+degisken bos_deger = bos;
+
+yazdir isim;
+yazdir yas;
+yazdir pi;
+yazdir boolDeger;
+yazdir bos_deger;
+
+// Degisken guncelleme
+yas = 22;
+yazdir yas;

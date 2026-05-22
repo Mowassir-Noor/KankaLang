@@ -1,0 +1,43 @@
+// Mantiksal degerler ve operatorler testi
+
+degisken dogru_deger = dogru;
+degisken yanlis_deger = yanlis;
+
+yazdir dogru_deger;
+yazdir yanlis_deger;
+
+// Degilleme
+yazdir !dogru_deger;
+yazdir !yanlis_deger;
+
+// ve / or kisayol degerlendirme
+// ve: ilk yanlis ise durur
+degisken a = yanlis ve dogru;
+yazdir a;
+
+// veya: ilk dogru ise durur
+degisken b = dogru veya yanlis;
+yazdir b;
+
+// Bos (nil) dogruluk degeri
+degisken bos_val = bos;
+eger (bos_val) {
+    yazdir "bos dogru";
+} degilse {
+    yazdir "bos yanlis";
+}
+
+// Sifir dogru kabul edilir (Lox/Kanka'da sifir truthy)
+eger (0) {
+    yazdir "sifir dogru";
+} degilse {
+    yazdir "sifir yanlis";
+}
+
+// Kıyaslama operatorleri
+yazdir 1 < 2;
+yazdir 2 <= 2;
+yazdir 3 > 4;
+yazdir 5 >= 5;
+yazdir 1 == 1;
+yazdir 1 != 2;

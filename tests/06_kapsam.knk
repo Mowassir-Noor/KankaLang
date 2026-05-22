@@ -1,0 +1,39 @@
+// Degisken kapsam (scope) testleri
+
+degisken global = "global";
+
+{
+    degisken blok = "blok icinde";
+    yazdir global;
+    yazdir blok;
+}
+
+// ic ice bloklar
+{
+    degisken dis = "dis blok";
+    {
+        degisken ic = "ic blok";
+        yazdir dis;
+        yazdir ic;
+    }
+    yazdir dis;
+}
+
+// Fonksiyon kapsamlari
+degisken x = "global x";
+
+fonk goster() {
+    degisken x = "fonksiyon x";
+    yazdir x;
+}
+
+goster();
+yazdir x;
+
+// Golgeleme (shadowing)
+degisken deger = 1;
+{
+    degisken deger = 2;
+    yazdir deger;
+}
+yazdir deger;

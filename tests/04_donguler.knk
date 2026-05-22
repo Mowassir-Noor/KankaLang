@@ -1,0 +1,27 @@
+// Dongu testleri
+
+// iken (while) dongusu
+degisken sayac = 0;
+iken (sayac < 5) {
+    yazdir sayac;
+    sayac = sayac + 1;
+}
+
+// icin (for) dongusu
+icin (degisken i = 0; i < 5; i = i + 1) {
+    yazdir i;
+}
+
+// icin dongusu ile toplam hesaplama
+degisken toplam = 0;
+icin (degisken j = 1; j <= 10; j = j + 1) {
+    toplam = toplam + j;
+}
+yazdir toplam;
+
+// ic ice dongu
+icin (degisken sat = 1; sat <= 3; sat = sat + 1) {
+    icin (degisken sut = 1; sut <= 3; sut = sut + 1) {
+        yazdir sat * sut;
+    }
+}

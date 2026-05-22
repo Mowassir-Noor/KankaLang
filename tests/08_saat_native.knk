@@ -1,0 +1,17 @@
+// Native fonksiyon: clock() testi
+
+degisken baslangic = clock();
+yazdir baslangic;
+
+// Kucuk bir dongu calistir
+degisken i = 0;
+iken (i < 1000) {
+    i = i + 1;
+}
+
+degisken bitis = clock();
+yazdir bitis;
+
+degisken gecen = bitis - baslangic;
+yazdir "Gecen sure (saniye):";
+yazdir gecen;

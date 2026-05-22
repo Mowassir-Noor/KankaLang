@@ -1,0 +1,43 @@
+// Kosul ifadeleri testi
+
+degisken sayi = 15;
+
+eger (sayi > 10) {
+    yazdir "sayi ondan buyuk";
+} degilse {
+    yazdir "sayi on veya daha kucuk";
+}
+
+// ic ice kosullar
+degisken not = 75;
+
+eger (not >= 90) {
+    yazdir "pekiyi";
+} degilse eger (not >= 70) {
+    yazdir "iyi";
+} degilse eger (not >= 50) {
+    yazdir "gecti";
+} degilse {
+    yazdir "kaldi";
+}
+
+// Mantiksal operatorler
+degisken x = 5;
+degisken y = 10;
+
+eger (x > 0 ve y > 0) {
+    yazdir "ikisi de pozitif";
+}
+
+eger (x > 100 veya y > 5) {
+    yazdir "en az biri buyuk";
+}
+
+// Esitlik kontrolleri
+eger (x == 5) {
+    yazdir "x bes";
+}
+
+eger (x != y) {
+    yazdir "x ve y esit degil";
+}
