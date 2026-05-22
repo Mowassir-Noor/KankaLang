@@ -2,14 +2,14 @@ package com.kankaLang.kanzi;
 
 import java.util.List;
 
-class LoxFunction implements LoxCallable {
+class KankaFunction implements KankaCallable {
 
     private final Stmt.Function declaration;
     private final Environment closure;
 
 
 
-    LoxFunction(Stmt.Function declaration, Environment closure) {
+    KankaFunction(Stmt.Function declaration, Environment closure) {
         this.closure = closure;
         this.declaration = declaration;
     }

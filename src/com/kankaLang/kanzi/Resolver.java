@@ -66,7 +66,7 @@ class Resolver implements Expr.Visitor<Object> , Stmt.Visitor<Void>{
     public Void visitVariableExpr(Expr.Variable expr) {
         if (!scopes.isEmpty() &&
                 scopes.peek().get(expr.name.lexeme) == Boolean.FALSE) {
-            Lox.error(expr.name,
+            Kanka.error(expr.name,
                     "Can't read local variable in its own initializer.");
         }
         resolveLocal(expr, expr.name);
@@ -159,7 +159,7 @@ class Resolver implements Expr.Visitor<Object> , Stmt.Visitor<Void>{
     @Override
     public Void visitReturnStmt(Stmt.Return stmt) {
         if (currentFunction == FunctionType.NONE) {
-            Lox.error(stmt.keyword, "Can't return from top-level code.");
+            Kanka.error(stmt.keyword, "Can't return from top-level code.");
         }
         if (stmt.value != null) {
             resolve(stmt.value);
@@ -185,7 +185,7 @@ class Resolver implements Expr.Visitor<Object> , Stmt.Visitor<Void>{
         if (scopes.isEmpty()) return;
         Map<String, Boolean> scope = scopes.peek();
         if (scope.containsKey(name.lexeme)) {
-            Lox.error(name,
+            Kanka.error(name,
                     "Already variable with this name in this scope.");
         }
         scope.put(name.lexeme, false);

@@ -159,7 +159,7 @@ public class Scanner {
                     identifier();
 
                 } else {
-                    Lox.error(line, "Unexpected character.");
+                    Kanka.error(line, "Unexpected character.");
 
                 }
                 break;
@@ -219,7 +219,7 @@ public class Scanner {
             advance();
         }
         if (isAtEnd()) {
-            Lox.error(line, "undetermined String.");
+            Kanka.error(line, "undetermined String.");
             return;
         }
         // The closing.

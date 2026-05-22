@@ -388,7 +388,7 @@ body=new Stmt.While(condition,body);
     }
 
     private ParseError error(Token token ,String message){
-        Lox.error(token,message);
+        Kanka.error(token,message);
         return new ParseError();
     }
 

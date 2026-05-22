@@ -21,7 +21,7 @@ class Interpreter implements Expr.Visitor<Object> , Stmt.Visitor<Void> {
 //        }
 //    }
 Interpreter() {
-    globals.define("clock", new LoxCallable() {
+    globals.define("clock", new KankaCallable() {
         @Override
         public int arity() { return 0; }
         @Override
@@ -40,7 +40,7 @@ Interpreter() {
                 execute(statement);
             }
         }catch(RuntimeError error){
-            Lox.runtimeError(error);
+            Kanka.runtimeError(error);
         }
     }
 
@@ -120,13 +120,13 @@ Interpreter() {
         for (Expr argument : expr.arguments) {
             arguments.add(evaluate(argument));
         }
-        if (!(callee instanceof LoxCallable)) {
+        if (!(callee instanceof KankaCallable)) {
             throw new RuntimeError(expr.paren,
                     "Can only call functions and classes.");
         }
 
 
-        LoxCallable function = (LoxCallable)callee;
+        KankaCallable function = (KankaCallable)callee;
         if (arguments.size() != function.arity()) {
             throw new RuntimeError(expr.paren, "Expected " +
                     function.arity() + " arguments but got " +
@@ -289,7 +289,7 @@ Interpreter() {
     }
     @Override
     public Void visitFunctionStmt(Stmt.Function stmt) {
-        LoxFunction function = new LoxFunction(stmt, environment);
+        KankaFunction function = new KankaFunction(stmt, environment);
 
         environment.define(stmt.name.lexeme, function);
         return null;
