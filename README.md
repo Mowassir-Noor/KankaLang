@@ -7,7 +7,7 @@ Evet, kendi programlama dilini yazdım. Hayır, bunun neden yapıldığını sor
 Önce bu repoyu klonlayın, sonra oturup Java yazdığınıza biraz üzünün:
 
 ```bash
-git clone https://github.com/kullanici-adi/kanka.git
+git clone https://github.com/Mowassir-Noor/kanka.git
 cd kanka
 javac -d build src/com/kankaLang/kanzi/*.java
 ```
